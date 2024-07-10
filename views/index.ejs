@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 800px;
+            width: 90%;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #444;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        li {
+            margin: 10px;
+            flex: 1;
+        }
+        a {
+            text-decoration: none;
+            display: block;
+            padding: 15px;
+            border-radius: 8px;
+            color: white;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease;
+        }
+        .spotify {
+            background-color: #1db954;
+        }
+        .spotify:hover {
+            background-color: #17a44c;
+        }
+        .netflix {
+            background-color: #e50914;
+        }
+        .netflix:hover {
+            background-color: #bf0811;
+        }
+        .nigeria-market {
+            background-color: #f4a261;
+        }
+        .nigeria-market:hover {
+            background-color: #e08d55;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Sales Dashboard</h1>
+        <ul>
+            <li><a href="/spotify" class="spotify">Subscription of Music on Spotify</a></li>
+            <li><a href="/netflix" class="netflix">Subscription of Movies on Netflix</a></li>
+            <li><a href="/nigeria-market" class="nigeria-market">Sales of Various Commodities in the Nigerian Market</a></li>
+        </ul>
+    </div>
+</body>
+</html>

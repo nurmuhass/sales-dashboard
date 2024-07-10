@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription of Movies on Netflix</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .nav {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            background-color: #333;
+            padding: 10px;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+        }
+        .stats, .charts, .table {
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        .charts {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .chart-container {
+            width: 48%;
+            min-width: 250px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="/">Home</a>
+        <a href="/spotify">Spotify</a>
+        <a href="/netflix">Netflix</a>
+        <a href="/nigeria-market">Nigeria Market</a>
+    </div>
+    <div class="container">
+        <h1>Subscription of Movies on Netflix</h1>
+
+        <div class="stats">
+            <h2>Key Metrics</h2>
+            <p>Total Streams: <span id="totalStreams">900,000</span></p>
+            <p>Total Downloads: <span id="totalDownloads">250,000</span></p>
+            <p>Reach: <span id="reach">400,000</span></p>
+            <p>Revenue Generated: <span id="revenue">$200,000</span></p>
+        </div>
+
+        <div class="charts">
+            <div class="chart-container">
+                <h2>Weekly Recap Downloads</h2>
+                <canvas id="weeklyRecapChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h2>Performance Trend</h2>
+                <canvas id="performanceTrendChart"></canvas>
+            </div>
+        </div>
+
+        <div class="table">
+            <h2>Top 5 Movies</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Movie Title</th>
+                        <th>Streams</th>
+                        <th>Downloads</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Movie 1</td>
+                        <td>200,000</td>
+                        <td>50,000</td>
+                    </tr>
+                    <tr>
+                        <td>Movie 2</td>
+                        <td>180,000</td>
+                        <td>45,000</td>
+                    </tr>
+                    <tr>
+                        <td>Movie 3</td>
+                        <td>150,000</td>
+                        <td>40,000</td>
+                    </tr>
+                    <tr>
+                        <td>Movie 4</td>
+                        <td>120,000</td>
+                        <td>35,000</td>
+                    </tr>
+                    <tr>
+                        <td>Movie 5</td>
+                        <td>100,000</td>
+                        <td>30,000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="charts">
+            <div class="chart-container">
+                <h2>Viewing Platforms - Apps</h2>
+                <canvas id="platformAppsChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h2>Viewing Platforms - Devices</h2>
+                <canvas id="platformDevicesChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var ctx1 = document.getElementById('weeklyRecapChart').getContext('2d');
+        var weeklyRecapChart = new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                datasets: [{
+                    label: 'Downloads',
+                    data: [1000, 1700, 2500, 4000],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        var ctx2 = document.getElementById('performanceTrendChart').getContext('2d');
+        var performanceTrendChart = new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                datasets: [{
+                    label: 'Streams',
+                    data: [80, 60, 70, 85, 90, 75],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        var ctx3 = document.getElementById('platformAppsChart').getContext('2d');
+        var platformAppsChart = new Chart(ctx3, {
+            type: 'pie',
+            data: {
+                labels: ['Netflix', 'Amazon Prime', 'Hulu'],
+                datasets: [{
+                    data: [65, 20, 15],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            }
+        });
+
+        var ctx4 = document.getElementById('platformDevicesChart').getContext('2d');
+        var platformDevicesChart = new Chart(ctx4, {
+            type: 'pie',
+            data: {
+                labels: ['Mobile', 'Desktop', 'Tablet'],
+                datasets: [{
+                    data: [70, 20, 10],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 99, 132, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 99, 132, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            }
+        });
+    </script>
+</body>
+</html>
+
